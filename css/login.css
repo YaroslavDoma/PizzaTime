@@ -1,0 +1,121 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-brand{
+    margin-left: 250px;
+}
+
+.card{
+    width: 75%;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 0 0 40px black;
+}
+
+.information{
+    display: flex;
+    justify-content: center;
+}
+li{
+    list-style: none;
+}
+
+.nav-pills > li > a.active {
+    background-color: #212529 !important;
+    color: #ffffff !important;
+}
+.nav-pills > li > a:hover {
+    background-color: #0d0e0f !important;
+    color: #ffffff !important;
+}
+.nav-pills > li > a{
+    background-color: #565c62 !important;
+    color: #ffffff;
+    margin-inline: 5px;
+    text-align: center;
+}
+
+.form-group{
+    margin: auto;
+}
+.reg{
+    width: 100%;
+}
+
+.content{
+    width: 30%;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 0 50px black;
+}
+
+.form-control{
+    cursor: pointer;
+}
+
+.confirmPass{
+    margin-right: 0;
+}
+
+.messageError{
+    margin: auto;
+    margin-top: 40px;
+    width: 30%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgb(255, 0, 0);
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+.messageSuccess{
+    margin: auto;
+    margin-top: 40px;
+    width: 30%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgb(0, 255, 42);
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* MOBILE  */
+@media screen and (max-width: 900px) {
+    .navbar-brand{
+        margin-left: 0;
+    }
+    .card{
+        margin-top: 75px;
+        width: 95%;
+    }
+
+    .loginform{
+        width: 100%;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .content{
+        width: 100%;
+    }
+
+    .messageError{
+        margin: auto;
+        margin-top: 40px;
+        width: 90%;
+    }
+
+    .messageSuccess{
+        margin: auto;
+        margin-top: 40px;
+        width: 90%;
+    }
+
+    .navbar{
+        width: 100%;
+    }
+}

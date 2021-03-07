@@ -1,0 +1,102 @@
+.navbar-brand{
+    margin-left: 250px;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.orderTable{
+    width: 50%;
+    box-shadow: 0 0 50px black;
+}
+
+.table-img{
+    height: 100px;
+}
+
+.tabs{
+    width: 60%;
+    margin: auto;
+}
+
+.firsttab{
+    margin-left: 250px;
+}
+
+.tableInput{
+    text-align: center;
+    border: none;
+    background: transparent;
+}
+
+.YourselfDiv{
+    justify-content: center;
+    margin: auto;
+    width: 50%;
+}
+
+.DeliveryDiv{
+    justify-content: center;
+    margin: auto;
+    width: 50%;
+}
+
+.sendbtn{
+    background-color: #0d0e0f !important;
+    color: white !important;
+}
+
+.sendbtndis{
+    background-color: #a52020 !important;
+    color: white !important;
+}
+
+/* MOBILE  */
+@media screen and (max-width: 900px) {
+    .content{
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 0 50px black;
+    }
+
+    .orderTable{
+        width: 100%;
+        box-shadow: 0 0 50px black;
+    }
+
+    .navbar-brand{
+        margin-left: 0;
+    }
+
+    input{
+        width: 50px;
+    }
+
+    .tabs{
+        width: 90%;
+    }
+
+    .YourselfDiv{
+        justify-content: center;
+        margin: auto;
+        width: 100%;
+    }
+
+    .DeliveryDiv{
+        justify-content: center;
+        margin: auto;
+        width: 100%;
+    }
+
+    .firsttab{
+        margin-left: 0px;
+    }
+
+    .navbar{
+        width: 100%;
+    }
+}

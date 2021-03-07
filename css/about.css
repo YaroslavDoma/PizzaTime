@@ -1,0 +1,32 @@
+.navbar-brand{
+    margin-left: 250px;
+}
+
+.card{
+    width: 75%;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 0 0 40px black;
+}
+
+.information{
+    display: flex;
+    justify-content: center;
+}
+li{
+    list-style: none;
+}
+
+/* MOBILE  */
+@media screen and (max-width: 900px) {
+    .navbar-brand{
+        margin-left: 0;
+    }
+    .card{
+        margin-top: 75px;
+        width: 95%;
+    }
+    .navbar{
+        width: 100%;
+    }
+}

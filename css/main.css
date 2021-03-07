@@ -1,0 +1,147 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.imgCarousel{
+    display: flex;
+    justify-content: center;
+}
+.carousel{
+    width: 75%;
+    box-shadow: 0 0 40px black;
+}
+.carousel-item{
+    height: 500px;
+}
+.d-block{
+    object-fit: cover;
+    height: 100%;
+}
+
+.Cards{
+    width: 100%;
+    margin-top: 50px;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 0.1fr 0.1fr 0.1fr 0.1fr;
+    grid-column-gap: 30px;
+    grid-row-gap: 40px;
+    
+}
+
+.navbar-brand{
+    margin-left: 250px;
+}
+
+.card{
+    box-shadow: 0 0 10px black;
+}
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 250px black;
+}
+
+.card-body{
+    height: 250px;
+}
+.card-img-top{
+    height: 380px;
+}
+
+.price-order{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+    bottom: 25px;
+    left: 0px;
+    right: 0px;
+}
+.order-button{
+    margin-inline: 40px;
+}
+
+footer{
+    text-align: center;
+    height: 50px;
+    margin-top: 50px;
+    background-color: #212529;
+    color: white;
+}
+
+.nav-pills{
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.nav-pills > li > a.active {
+    background-color: #212529 !important;
+    color: #ffffff !important;
+}
+.nav-pills > li > a:hover {
+    background-color: #0d0e0f !important;
+    color: #ffffff !important;
+}
+.nav-pills > li > a{
+    background-color: #565c62 !important;
+    color: #ffffff;
+    margin-inline: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 50px black;
+    text-align: center;
+    width: 200px;
+    font-size: 18px;
+}
+
+.sendOrderBtn{
+    height: 50px;
+    width: 200px;
+}
+
+.checkBox{
+    height: 30px;
+    width: 30px;
+}
+
+.checkBox:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* MOBILE  */
+@media screen and (max-width: 900px) {
+    .Cards{
+        width: 100%;
+        margin-top: 50px;
+        justify-content: center;
+        display: grid;
+        grid-template-columns: 0.3fr;
+        grid-column-gap: 5px;
+        grid-row-gap: 1em; 
+    }
+
+    .carousel{
+        width: 100%;
+    }
+
+    .navbar-brand{
+        margin-left: 0;
+    }
+
+    .card:hover{
+        transform: scale(1);
+        box-shadow: 0 0 10px black;
+    }
+
+    .checkBox:hover{
+        transform: scale(1);
+        cursor: pointer;
+    }
+
+    .navbar{
+        width: 100%;
+    }
+}
