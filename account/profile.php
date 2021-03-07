@@ -107,7 +107,7 @@
 
 				<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 				
-					<form method="POST" action="settings/changepassword.php">
+					<form method="POST" action="settings/accountOptions.php">
 						<div class="form-group row">
 							<label for="inputPassword" class="col-sm-2 col-form-label">Old password</label>
 							<div class="col-sm-10">
@@ -126,14 +126,14 @@
 								<input type="password" class="form-control" id="inputPassword" placeholder="Confirm new password" name="NewPassword2">
 							</div>
 						</div>
-						<button type="submit" class="btn btn-dark">Change password</button>
+						<button type="submit" class="btn btn-dark" name="ChangePassword" >Change password</button>
 					</form>
 
 				</div>
 
 				<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
 
-					<form method="POST" action="settings/changename.php">
+					<form method="POST" action="settings/accountOptions.php">
 						<div class="form-group row">
 							<label class="col-sm-2 col-form-label">New name</label>
 							<div class="col-sm-10">
@@ -146,13 +146,13 @@
 								<input type="password" class="form-control" id="inputPassword" placeholder="Confirm by password" name="Password">
 							</div>
 						</div>
-						<button type="submit" class="btn btn-dark">Change name</button>
+						<button type="submit" class="btn btn-dark" name="ChangeName">Change name</button>
 					</form>
 
 				</div>
 
 				<div class="tab-pane fade" id="pills-phone" role="tabpanel" aria-labelledby="pills-phone-tab">
-					<form method="POST" action="settings/changephone.php">
+					<form method="POST" action="settings/accountOptions.php">
 						<div class="form-group row">
 							<label class="col-sm-2 col-form-label">New phone</label>
 							<div class="col-sm-10">
@@ -165,7 +165,7 @@
 								<input type="password" class="form-control" id="inputPassword" placeholder="Confirm by password" name="Password">
 							</div>
 						</div>
-						<button type="submit" class="btn btn-dark">Change phone</button>
+						<button type="submit" class="btn btn-dark" name="ChangePhone">Change phone</button>
 					</form>
 				</div>
 
