@@ -2,20 +2,24 @@ body{
     margin: 0;
     padding: 0;
 }
-
-
-
 .imgCarousel{
     display: flex;
     justify-content: center;
 }
 .carousel{
-    width: 75%;
+    width: 100%;
     box-shadow: 0 0 40px black;
 }
 .carousel-item{
-    height: 500px;
+    height: 600px;
 }
+
+.Line{
+    width: 100%;
+    background-color: #212529 !important;
+    height: 15px;
+}
+
 .d-block{
     object-fit: cover;
     height: 100%;
@@ -41,7 +45,11 @@ body{
 }
 .card:hover{
     transform: scale(1.1);
+    transition: 1s;
     box-shadow: 0 0 250px black;
+}
+.card:not(:hover){
+    transition: 1s;
 }
 
 .card-body{
@@ -82,23 +90,34 @@ footer{
     color: #ffffff !important;
 }
 .nav-pills > li > a:hover {
-    background-color: #0d0e0f !important;
-    color: #ffffff !important;
+    background-color: white !important;
+    color: black !important;
+    transition: 1s;
 }
 .nav-pills > li > a{
     background-color: #565c62 !important;
     color: #ffffff;
-    margin-inline: 5px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 50px black;
+    margin-inline: 10px;
+    margin-bottom: 5px;
+    box-shadow: 0 0 10px black;
     text-align: center;
-    width: 200px;
-    font-size: 18px;
+    width: 250px;
+    font-size: 22px;
 }
 
 .sendOrderBtn{
-    height: 50px;
-    width: 200px;
+    width: 300px;
+    box-shadow: 0 0 10px black;
+    transition: 2s;
+    font-size: 22px !important;
+}
+
+.sendOrderBtn:hover{
+    transition: 2s;
+    width: 400px;
+}
+.sendOrderBtn:not(:hover) {
+    transition: 2s;
 }
 
 .checkBox{
@@ -113,6 +132,14 @@ footer{
 
 /* MOBILE  */
 @media screen and (max-width: 900px) {
+    .carousel{
+        width: 100%;
+        box-shadow: 0 0 40px black;
+    }
+    .carousel-item{
+        height: 400px;
+    }
+
     .Cards{
         width: 100%;
         margin-top: 50px;

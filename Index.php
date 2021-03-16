@@ -44,8 +44,6 @@
 			</li>
 		  </ul>
 		</div>
-		
-
 	</nav>
 
 	<div class="imgCarousel">
@@ -76,7 +74,8 @@
 		</a>
 		</div>
 	</div>
-	
+
+	<div class="Line"></div>
 
 	<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 		<li class="nav-item">
@@ -89,10 +88,13 @@
 
 	<form method="POST" action="paymentmenu.php">
 		<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+			<div class="">
+			</div>
 			<li class="nav-item">
-				<button type="submit" name="toPaymentMenu" class="btn btn-dark mb-2 sendOrderBtn">To payment menu</button>
+				<button type="submit" name="toPaymentMenu" class="btn btn-success mb-2 sendOrderBtn"> <img src="images/basket.png" width="35" height="35"> To payment menu</button>
 			</li>
 		</ul>
+
 	
 		<div class="tab-content" id="pills-tabContent">
 			<div class="tab-pane fade show active" id="pills-pizza" role="tabpanel" aria-labelledby="pills-pizza-tab">

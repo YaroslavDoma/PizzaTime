@@ -46,14 +46,21 @@
 }
 
 .sendbtn{
-    background-color: #0d0e0f !important;
+    background-color: #11a628 !important;
     color: white !important;
+}
+.sendbtn:hover{
+    cursor: pointer;
 }
 
 .sendbtndis{
     background-color: #a52020 !important;
     color: white !important;
 }
+.sendbtndis:hover{
+    cursor: no-drop;
+}
+
 
 /* MOBILE  */
 @media screen and (max-width: 900px) {
