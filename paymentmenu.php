@@ -50,7 +50,7 @@
 
 	<div class="content">
 		<div class="orderTable">
-			<table class="table">
+			<table class="table" id="table">
 			<thead>
 				<tr>
 					<th scope="col">Image</th>
@@ -72,20 +72,23 @@
 						
 					}
 					else{
+						$count = 0;
 						foreach($piz as $item){
+							$count++;
 							$result = FindPizza($item);
 							?>
 								<tr>
 									<th><img class="table-img" src="<?php echo $result['image']?>"></th>
 									<td><input class="tableInput" type="text" value="<?php echo $result['name']?>" readonly name="pizza[]"/></td>
 									<td><?php echo $result['price']?>&#8372;</td>
-									<td><input class="tableInput" type="number" class="inputNumber" min="1" max="5" value="1" 	name = "pizzaCount[]"/></td>
+									<td><input class="tableInput numberInput" type="number" min="1" max="5" value="1" name = "pizzaCount[]" onchange="PriceForPizza()" <?php echo "id='count-$count'" ?> /></td>
 								</tr>
 
 							<?php
 						}
 						if(count($drinks) > 0){
 							foreach($drinks as $item){
+								$count++;
 								$result = FindDrink($item);
 								?>
 
@@ -93,7 +96,7 @@
 										<th><img class="table-img" src="<?php echo $result['image']?>"></th>
 										<td><input class="tableInput" type="text" value="<?php echo $result['name']?>" readonly 	name="drink[]"/></td>
 										<td><?php echo $result['price']?>&#8372;</td>
-										<td><input class="tableInput" type="number" class="inputNumber" min="1" max="5" value="1" 	name = "drinkCount[]"/></td>
+										<td><input class="tableInput numberInput" type="number" min="1" max="5" value="1" 	name = "drinkCount[]" onchange="PriceForPizza()" <?php echo "id='count-$count'" ?>/></td>
 									</tr>
 
 								<?php
@@ -107,6 +110,7 @@
 		</div>	
 	</div>
 
+	<h3 class="PriceText" id="PriceText">Total price: 0&#8372;</h3>
 
 	<div class="tabs">
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -145,9 +149,6 @@
 				</div>
 			</div>
 
-
-
-
 			<div class="tab-pane fade" id="yourself" role="tabpanel" aria-labelledby="yourself-tab">
 				<div class="YourselfDiv">
 					<h5 style="margin-top: 15px;">You can take your pizza in 20-30 minutes at Kyiv, st. Leo Tolstoy, 1a</h5>
@@ -172,7 +173,9 @@
 		</div>
 	</div>
 
-			</form>
+	</form>
+
+	<script src="main.js" onload="PriceForPizza()"></script>
 			
 			
 </body>

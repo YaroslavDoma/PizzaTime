@@ -5,12 +5,12 @@
 .content{
     display: flex;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 35px;
     text-align: center;
 }
 
 .orderTable{
-    width: 50%;
+    width: 60%;
     box-shadow: 0 0 50px black;
 }
 
@@ -21,6 +21,13 @@
 .tabs{
     width: 60%;
     margin: auto;
+    margin-bottom: 150px;
+}
+
+.PriceText{
+    text-align: center; 
+    margin: 20px;
+    margin-top: 80px;
 }
 
 .firsttab{
@@ -31,6 +38,10 @@
     text-align: center;
     border: none;
     background: transparent;
+}
+
+.numberInput{
+    box-shadow: 0 0 1px black;
 }
 
 .YourselfDiv{
