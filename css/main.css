@@ -44,6 +44,7 @@ body{
     box-shadow: 0 0 10px black;
 }
 .card:hover{
+    cursor: pointer;
     transform: scale(1.1);
     transition: 1s;
     box-shadow: 0 0 250px black;

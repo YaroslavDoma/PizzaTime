@@ -16,6 +16,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+	<script src="main.js" ></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -106,8 +107,12 @@
 						}
 					?>
 
-					<?php foreach ($dataPizza as $item): ?>
-						<div class="card" style="width: 18rem;">
+					<?php 
+						$count = 0;
+						foreach ($dataPizza as $item): 
+							$count++;
+						?>
+						<div class="card" <?php echo "id='card-$count'" ?> onclick="onDivClick(<?php echo $count?>)" style="width: 18rem;">
 							<img class="card-img-top" src="<?php echo $item["image"]?>" alt="Card image cap">
 							<div class="card-body">
 								<h5 class="card-title"><?php echo $item["name"]?></h5>
@@ -118,7 +123,7 @@
 										<h5 class="card-title"><?php echo $item["weight"]?>g / <?php echo $item["price"]?>&#8372;</p>
 									</div>
 									<div class="order-button">
-										<input class="checkBox" type="checkbox" name="pizza[]" value="<?php echo $item['name']?>"/>
+										<input class="checkBox" type="checkbox" name="pizza[]" value="<?php echo $item['name']?>" <?php echo "id='check-$count'" ?> />
 									</div>
 								</div>
 							</div>
@@ -138,8 +143,10 @@
 							}
 						?>
 
-						<?php foreach ($dataDrinks as $item): ?>
-							<div class="card" style="width: 18rem;">
+						<?php foreach ($dataDrinks as $item): 
+								$count++;
+							?>
+							<div class="card" <?php echo "id='card-$count'" ?> onclick="onDivClick(<?php echo $count?>)" style="width: 18rem;">
 								<img class="card-img-top" src="<?php echo $item["image"]?>" alt="Card image cap">
 								<div class="card-body" style="height: 150px;">
 									<h5 class="card-title"><?php echo $item["name"]?></h5>
@@ -149,7 +156,7 @@
 											<h5 class="card-title">1 liter / <?php echo $item["price"]?>&#8372;</p>
 										</div>
 										<div class="order-button">
-											<input class="checkBox" type="checkbox" name="drinks[]" value="<?php echo $item['name']?>"/>
+											<input class="checkBox" type="checkbox" name="drinks[]" value="<?php echo $item['name']?>" <?php echo "id='check-$count'" ?> />
 										</div>
 									</div>
 								</div>

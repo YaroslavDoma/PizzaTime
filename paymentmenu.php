@@ -69,7 +69,7 @@
 					$drinks = $_POST['drinks'];
 
 					if(empty($piz)){
-						echo "<script>alert('You did not select any pizza ')</script>";
+						
 					}
 					else{
 						foreach($piz as $item){
