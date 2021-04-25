@@ -47,7 +47,7 @@ body{
     cursor: pointer;
     transform: scale(1.1);
     transition: 1s;
-    box-shadow: 0 0 250px black;
+    
 }
 .card:not(:hover){
     transition: 1s;
