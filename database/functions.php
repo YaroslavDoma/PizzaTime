@@ -1,7 +1,8 @@
 <?php 
 
 function connect(){
-    $link = mysqli_connect('localhost','root','root','timetopizza');
+    $link = mysqli_connect('192.168.0.102','PizzaTime','PizzaTime','timetopizza');
+    
     if(mysqli_connect_errno() ){
         echo 'Connection error ('.mysqli_connect_errno().'): '.mysqli_connect_error();
         exit();

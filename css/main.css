@@ -142,6 +142,7 @@ footer{
     }
 
     .Cards{
+        
         width: 100%;
         margin-top: 50px;
         justify-content: center;
@@ -149,6 +150,14 @@ footer{
         grid-template-columns: 0.3fr;
         grid-column-gap: 5px;
         grid-row-gap: 1em; 
+    }
+
+    .carousel-item{
+        height: 300px;
+    }
+
+    .Line{
+        height: 5px;
     }
 
     .carousel{
@@ -159,14 +168,17 @@ footer{
         margin-left: 0;
     }
 
+    .sendOrderBtn:hover{
+        transition: 2s;
+        width: 300px;
+    }
+
     .card:hover{
         transform: scale(1);
-        box-shadow: 0 0 10px black;
     }
 
     .checkBox:hover{
         transform: scale(1);
-        cursor: pointer;
     }
 
     .navbar{
