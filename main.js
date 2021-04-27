@@ -25,3 +25,27 @@ function PriceForPizza(){
     }
     priceText.innerHTML = "Total price: " + sum + "&#8372;";
 }
+
+
+function Search( tableName, opt ){
+    let input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("Search");
+    filter = input.value.toUpperCase();
+    table = document.getElementById(tableName);
+    tr = table.getElementsByTagName("tr");
+    opt = parseInt(opt);
+
+    for (i = 1; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[opt];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            console.log(txtValue);
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }       
+    }
+    
+}

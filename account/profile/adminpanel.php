@@ -21,6 +21,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+	<script src="../../main.js" ></script>
+
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -83,14 +85,16 @@
 					<a class="nav-link" id="pills-add-tab" data-toggle="pill" href="#pills-add" role="tab" aria-controls="pills-add" aria-selected="false">Add new item</a>
 				</li>
 				
+				
 			</ul>
 				
 			<div class="tab-content" id="pills-tabContent">
 					<div class="tab-pane fade show active" id="pills-users" role="tabpanel" aria-labelledby="pills-users-tab">
-						<table class="table">
+						<input type="text" class="SearchInput" id="Search" onkeyup='Search("UsersTable", 2)' placeholder="Search by name...">
+						<table class="table" id="UsersTable">
 							<thead>
 								<tr>
-								<th scope="col">Id</th>
+									<th scope="col">Id</th>
 									<th scope="col">Email</th>
 									<th scope="col">Name</th>
 									<th scope="col">Phone</th>
@@ -105,7 +109,7 @@
 									if(count($data) != 0){
 										foreach($data as $item){									
 											echo "<tr>";
-												echo "<th>". $item['id'] . "</th>";
+												echo "<td><strong>". $item['id'] . "</strong></th>";
 												echo "<td>". $item['email'] . "</td>";
 												echo "<td>". $item['name'] . "</td>";
 												echo "<td>". $item['phone'] . "</td>";
@@ -144,13 +148,13 @@
 					</div>
 
 					<div class="tab-pane fade" id="pills-orders" role="tabpanel" aria-labelledby="pills-orders-tab">
-						<table class="table">
+						<table class="table" id="OrdersTable">
 							<thead>
 								<tr>
 								<th scope="col">Id</th>
 									<th scope="col">Name</th>
 									<th scope="col">Phone</th>
-									<th scope="col">Sum</th>
+									<th scope="col" data-type="number">Sum</th>
 									<th scope="col">Order</th>
 									<th scope="col">Completed</th>
 								</tr>
@@ -164,7 +168,7 @@
 											else $com = "No";
 
 											echo "<tr>";
-												echo "<th>". $item['id'] . "</th>";
+												echo "<td><strong>". $item['id'] . "</strong></th>";
 												echo "<td>". $item['name'] . "</td>";
 												echo "<td>". $item['phone'] . "</td>";
 												echo "<td>". $item['sum'] . "</td>";
@@ -306,6 +310,9 @@
 							</div>
 						</div>
 					</div>
+
+					
+					
 
 
 
