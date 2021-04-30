@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 07 2021 г., 22:10
--- Версия сервера: 5.7.29
+-- Время создания: Апр 30 2021 г., 18:24
+-- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -69,7 +69,7 @@ CREATE TABLE `pizza` (
 --
 
 INSERT INTO `pizza` (`id`, `name`, `ingredients`, `weight`, `price`, `image`) VALUES
-(1, 'Classic', 'Tomato sauce, mozzarella cheese, appetizing salami with juicy ham, ripe tomatoes, mushrooms ', 550, 210, 'images\\pizza_cards\\classic.jpg'),
+(1, 'Classic', 'Tomato sauce, mozzarella cheese, appetizing salami with juicy ham, ripe tomatoes, mushrooms   ', 550, 210, 'images\\pizza_cards\\classic.jpg'),
 (2, 'Margarita', 'Tomato sauce, mozzarella cheese and ripe tomatoes', 550, 150, 'images\\pizza_cards\\margarita.png'),
 (3, 'Four Seasons', 'Tomato sauce, mozzarella cheese, mushrooms, salami, dorblyu cheese', 550, 175, 'images\\pizza_cards\\pitstsa-chetyre-sezona.png'),
 (4, 'Vegetarian', 'Tomato sauce, mozzarella cheese, mushrooms, sweet peppers, sweet corn, onions, olives and fresh herbs', 590, 180, 'images\\pizza_cards\\vegetarianskaya.png'),
@@ -97,29 +97,21 @@ CREATE TABLE `pizzaorders` (
   `phone` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sum` int(8) NOT NULL,
   `order` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `delivery` tinyint(1) NOT NULL DEFAULT '0',
+  `delivery` tinyint(1) NOT NULL DEFAULT 0,
   `address` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cooked` tinyint(1) DEFAULT '0',
-  `completed` tinyint(1) NOT NULL DEFAULT '0'
+  `cooked` tinyint(1) DEFAULT 0,
+  `completed` tinyint(1) NOT NULL DEFAULT 0,
+  `clientId` int(11) DEFAULT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `pizzaorders`
 --
 
-INSERT INTO `pizzaorders` (`id`, `name`, `phone`, `sum`, `order`, `delivery`, `address`, `cooked`, `completed`) VALUES
-(13, 'Yaroslav', '38093269', 475, 'Bavarian*2, Coca Cola*1, ', 1, 'Heroiv Dnipra', 1, 1),
-(14, 'Yaroslav', '3809326944', 535, 'Classic*1, Margarita*1, Four Seasons*1, ', 0, NULL, 1, 1),
-(15, 'Yaroslav', '3809326944', 545, 'Margarita*2, Four Seasons*1, Sandora apple*2, ', 0, NULL, 1, 1),
-(16, 'Yaroslav', '38093269', 260, 'Classic*1, ', 1, 'Heroiv Dnipra', 1, 1),
-(17, 'Kristina', '38093244', 825, 'Classic*2, Vegetarian*1, Hawaiian*1, Fanta*1, ', 0, NULL, 1, 1),
-(18, 'Islamka', '1233445', 360, 'Classic*1, Margarita*1, ', 0, NULL, 1, 1),
-(19, 'Julia', '12345678', 540, 'Philadelphia*1, Carbonara*1, ', 1, 'Teremky', 1, 0),
-(20, 'Yaroslav', '3809326944XX', 200, 'Margarita*1, ', 1, 'Heroiv Dnipra', 1, 0),
-(21, 'Margarita', '3809326944XX', 375, 'Margarita*2, Coca Cola*1, ', 1, 'Ipodrom', 1, 0),
-(22, 'Ivan', '3809326944', 235, 'Americano*1, Sprite*1, ', 0, NULL, 1, 1),
-(23, 'Anastasiya', '3809356326XX', 235, 'Hawaiian*1, Sandora apple*1, ', 0, NULL, 0, 0),
-(24, 'Julia', '987654321', 385, 'Classic*1, Margarita*1, Pepsi*1, ', 0, NULL, 0, 0);
+INSERT INTO `pizzaorders` (`id`, `name`, `phone`, `sum`, `order`, `delivery`, `address`, `cooked`, `completed`, `clientId`, `date`) VALUES
+(68, 'Yaroslav', '3809326944XX', 150, 'Margarita*1, ', 0, NULL, 0, 0, 1, '2030-04-21'),
+(69, 'Yaroslav', '3809326944XX', 255, 'Vegetarian*1, Coca Cola*3, ', 0, NULL, 1, 1, 1, '2030-04-21');
 
 -- --------------------------------------------------------
 
@@ -147,7 +139,8 @@ INSERT INTO `users` (`id`, `email`, `password`, `name`, `phone`, `gender`, `stat
 (3, 'ivan@gmail.com', '2c42e5cf1cdbafea04ed267018ef1511', 'Ivan', '', 'Male', 'Deliveryman'),
 (4, 'julia@gmail.com', 'c2e285cb33cecdbeb83d2189e983a8c0', 'Julia', '987654321', 'Female', 'Cook'),
 (5, 'anastasiya@gmail.com', '202cb962ac59075b964b07152d234b70', 'Anastasiya', '', 'Female', 'Client'),
-(6, 'oleg@gmail.com', '045b9e4d8b96dce053950297a8a39665', 'Oleg', '', 'Male', 'Client');
+(6, 'oleg@gmail.com', '045b9e4d8b96dce053950297a8a39665', 'Oleg', '', 'Male', 'Client'),
+(7, 'test@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'Denis', '', 'Male', 'Client');
 
 --
 -- Индексы сохранённых таблиц
@@ -185,25 +178,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `drinks`
 --
 ALTER TABLE `drinks`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT для таблицы `pizza`
 --
 ALTER TABLE `pizza`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT для таблицы `pizzaorders`
 --
 ALTER TABLE `pizzaorders`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

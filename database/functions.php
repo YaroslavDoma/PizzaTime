@@ -121,5 +121,17 @@ function GetAllOrders(){
 }
 
 
+function GetMyOrders(){
+    $link = connect();
+    $clientId = $_SESSION['user']['id'];
+
+    $sql = "SELECT * FROM `pizzaorders` WHERE `clientId` = '$clientId';";
+    $result = mysqli_query($link, $sql);
+    $data = mysqli_fetch_all($result, 1);
+
+    mysqli_close($link);
+    return $data;
+}
+
 
 ?>

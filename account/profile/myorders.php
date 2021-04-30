@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Orders - PizzaTime</title>
+	<title>Delivery - PizzaTime</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../../css/profile.css">
@@ -35,15 +35,16 @@
 		</nav>
 	  
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
 		  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 			<li class="nav-item first">
 				<a class="nav-link" href="../profile.php">Profile</a>
 			</li>
-			
+
 			<?php
 				if($_SESSION['user']['status'] != "Client"){
 			?>
-				<li class="nav-item active">
+				<li class="nav-item">
 					<a class="nav-link" href="orders.php">Active Orders</a>
 				</li>
 				<li class="nav-item">
@@ -52,14 +53,14 @@
 				<li class="nav-item">
 					<a class="nav-link" href="adminpanel.php">Admin Panel</a>
 				</li>
-                <li class="nav-item">
+                <li class="nav-item active">
 					<a class="nav-link" href="myorders.php">My orders</a>
 				</li>
 			<?php
 				}
 				else{
 			?>
-				<li class="nav-item">
+				<li class="nav-item active">
 					<a class="nav-link" href="myorders.php">My orders</a>
 				</li>
 			<?php
@@ -79,65 +80,53 @@
 
 
 
-	<?php
-	if($_SESSION['user']['status'] == "Cook" or $_SESSION['user']['status'] == "Admin"){ ?>
-		<div class="main">
-			<div class="ordersTable">
-				<table class="table table-hover table-sm">
-					<thead class="thead-dark">
-						<tr>
-							<th scope="col">Id</th>
-							<th scope="col">Name</th>
-							<th scope="col">Order</th>
-							<th scope="col">Sum</th>
-							<th scope="col">Delivery</th>
-							<th scope="col">Cooked</th>
-							<th scope="col">Complete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-							$data = GetUncompletedOrders();
-							if(count($data) != 0){
-								foreach($data as $item){
-									$cooked     = ($item['cooked'] == 1) ? 'Yes' : 'No';
-                                	$delivery   = ($item['delivery'] == 1) ? 'Yes' : 'No';
-									
-									echo "<tr>";
-										echo "<th>". $item['id'] . "</th>";
-										echo "<td>". $item['name'] . "</td>";
-										echo "<td>". $item['order'] . "</td>";
-										echo "<td>". $item['sum'] . "</td>";
-										echo "<td>". $delivery . "</td>";
-										echo "<td>". $cooked . "</td>";
-										?>
-										<td> 
-											<form method="POST" action="completeOrder.php">
-												<input type="hidden" value="<?php echo $item['id'] ?>" name="id">
-												<input type="hidden" value="<?php echo $item['delivery'] ?>" name="delivery">
-												<button class="btn btn-dark Complete" type="submit" name="Cook">Complete</button> 
-											</form>
-										</td>
-									</tr>
-								<?php
-								}
-							}
-						?>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	<?php
-	}else{
-	?>
-		<div class="main">
-			<div class="content">
-				<p>You don't have permissions to see this page.</p>
-			</div>
-		</div>
-	<?php
-	}
-	?>
+    <div class="main">
+        <div class="ordersTable">
+            <table class="table table-hover table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Sum</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Delivery</th>
+                        <th scope="col">Cooked</th>
+                        <th scope="col">Completed</th>
+						<th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $data = GetMyOrders();
+						if(count($data) == 0){
+							echo "You don't have any orders";
+						}else{
+                            foreach($data as $item){
+                                echo "<tr>";
+
+                                $status     = ($item['completed'] == 1) ? 'Yes' : 'No';
+                                $cooked     = ($item['cooked'] == 1) ? 'Yes' : 'No';
+                                $delivery   = ($item['delivery'] == 1) ? 'Yes' : 'No';
+
+                                echo "<td>" . $item['id'] . "</td>";
+                                echo "<td>" . $item['name'] . "</td>";
+                                echo "<td>" . $item['address'] . "</td>";
+                                echo "<td>" . $item['sum'] . "</td>";
+                                echo "<td>" . $item['phone'] . "</td>";
+                                echo "<td>" . $delivery . "</td>";
+                                echo "<td>" . $cooked . "</td>";
+                                echo "<td>" . $status . "</td>";
+								echo "<td>" . $item['date'] . "</td>";
+
+                                echo "<tr>";
+                            }
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 	
 	
 	

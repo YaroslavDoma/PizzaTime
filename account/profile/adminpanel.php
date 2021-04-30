@@ -41,15 +41,32 @@
 			<li class="nav-item first">
 				<a class="nav-link" href="../profile.php">Profile</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="orders.php">Active Orders</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="delivery.php">Active delivery</a>
-			</li>
-			<li class="nav-item active">
-				<a class="nav-link" href="adminpanel.php">Admin Panel</a>
-			</li>
+			
+			<?php
+				if($_SESSION['user']['status'] != "Client"){
+			?>
+				<li class="nav-item">
+					<a class="nav-link" href="orders.php">Active Orders</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="delivery.php">Active delivery</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="adminpanel.php">Admin Panel</a>
+				</li>
+                <li class="nav-item">
+					<a class="nav-link" href="myorders.php">My orders</a>
+				</li>
+			<?php
+				}
+				else{
+			?>
+				<li class="nav-item">
+					<a class="nav-link" href="myorders.php">My orders</a>
+				</li>
+			<?php
+				}
+			?>
 
 			<li class="nav-item logOutButton">
 				<a href="../signout.php">
@@ -91,8 +108,8 @@
 			<div class="tab-content" id="pills-tabContent">
 					<div class="tab-pane fade show active" id="pills-users" role="tabpanel" aria-labelledby="pills-users-tab">
 						<input type="text" class="SearchInput" id="Search" onkeyup='Search("UsersTable", 2)' placeholder="Search by name...">
-						<table class="table" id="UsersTable">
-							<thead>
+						<table class="table table-hover table-sm" id="UsersTable">
+							<thead class="thead-dark">
 								<tr>
 									<th scope="col">Id</th>
 									<th scope="col">Email</th>
@@ -148,15 +165,18 @@
 					</div>
 
 					<div class="tab-pane fade" id="pills-orders" role="tabpanel" aria-labelledby="pills-orders-tab">
-						<table class="table" id="OrdersTable">
-							<thead>
+						<table class="table table-hover table-sm" id="OrdersTable">
+							<thead class="thead-dark">
 								<tr>
-								<th scope="col">Id</th>
+									<th scope="col">Id</th>
 									<th scope="col">Name</th>
 									<th scope="col">Phone</th>
 									<th scope="col" data-type="number">Sum</th>
 									<th scope="col">Order</th>
+									<th scope="col">Delivery</th>
+									<th scope="col">Coocked</th>
 									<th scope="col">Completed</th>
+									<th scope="col">Date</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -164,20 +184,23 @@
 									$data = GetAllOrders();
 									if(count($data) != 0){
 										foreach($data as $item){	
-											if($item['completed'] == "1") $com = "Yes";
-											else $com = "No";
+											$status     = ($item['completed'] == 1) ? 'Yes' : 'No';
+                                			$cooked     = ($item['cooked'] == 1) 	? 'Yes' : 'No';
+                                			$delivery   = ($item['delivery'] == 1) 	? 'Yes' : 'No';
 
 											echo "<tr>";
-												echo "<td><strong>". $item['id'] . "</strong></th>";
-												echo "<td>". $item['name'] . "</td>";
-												echo "<td>". $item['phone'] . "</td>";
-												echo "<td>". $item['sum'] . "</td>";
-												echo "<td>". $item['order'] . "</td>";
-												echo "<td>". $com . "</td>";
-												?>
-												
-											</tr>
-										<?php
+
+											echo "<td><strong>". $item['id'] . "</strong></th>";
+											echo "<td>". $item['name'] . "</td>";
+											echo "<td>". $item['phone'] . "</td>";
+											echo "<td>". $item['sum'] . "</td>";
+											echo "<td>". $item['order'] . "</td>";
+											echo "<td>". $delivery . "</td>";
+											echo "<td>". $cooked . "</td>";
+											echo "<td>". $status . "</td>";
+											echo "<td>". $item['date'] . "</td>";
+
+											echo "</tr>";
 										}
 									}
 								?>
@@ -187,8 +210,8 @@
 
 					<div class="tab-pane fade" id="pills-menu" role="tabpanel" aria-labelledby="pills-menu-tab">
 						<div class="TableContent">
-							<table class="table">
-								<thead>
+							<table class="table table-hover table-sm">
+								<thead class="thead-dark">
 									<tr>
 										<th scope="col">Id</th>
 										<th scope="col">Image</th>
@@ -234,8 +257,8 @@
 
 					<div class="tab-pane fade" id="pills-drinks" role="tabpanel" aria-labelledby="pills-drinks-tab">
 						<div class="TableContent">
-							<table class="table">
-								<thead>
+							<table class="table table-hover table-sm">
+								<thead class="thead-dark">
 									<tr>
 										<th scope="col">Id</th>
 										<th scope="col">Image</th>
@@ -310,11 +333,6 @@
 							</div>
 						</div>
 					</div>
-
-					
-					
-
-
 
 				</div>
 			</div>

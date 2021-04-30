@@ -9,6 +9,7 @@ if(isset($_POST['soYourself'])){
     $drinkCount 	= $_POST['drinkCount'];
     $name 			= $_POST['ordersName'];
     $phone 			= $_POST['phoneNumber'];
+    $today = date("d.m.y"); 
     $fullorder = "";
     $price = 0;
 
@@ -38,11 +39,11 @@ if(isset($_POST['soYourself'])){
     
         if($_SESSION['user']){
             $clientId = $_SESSION['user']['id'];
-            $sql = "INSERT INTO `pizzaorders`(`name`, `phone`, `sum`, `order`, `clientId`) VALUES ('$name', '$phone', '$price', '$fullorder', '$clientId');";
+            $sql = "INSERT INTO `pizzaorders`(`name`, `phone`, `sum`, `order`, `clientId`, `date`) VALUES ('$name', '$phone', '$price', '$fullorder', '$clientId', '$today');";
         }else{
-            $sql = "INSERT INTO `pizzaorders`(`name`, `phone`, `sum`, `order`) VALUES ('$name', '$phone', '$price', '$fullorder');";
+            $sql = "INSERT INTO `pizzaorders`(`name`, `phone`, `sum`, `order`, `date`) VALUES ('$name', '$phone', '$price', '$fullorder', '$today');";
         }
-    
+
         $result = MakeOrder($sql);
         $_SESSION['LastOrder'] = $result;
         header('Location: thanks.php');
@@ -57,7 +58,7 @@ if(isset($_POST['soDelivery'])){
     $name 			= $_POST['ordersname'];
     $phone 			= $_POST['phonenumber'];
     $address 		= $_POST['address'];
-
+    $today = date("m.d.y"); 
     $fullorder = "";
     $price = 50;
 
@@ -95,9 +96,9 @@ if(isset($_POST['soDelivery'])){
 
     if($_SESSION['user']){
         $clientId = $_SESSION['user']['id'];
-        $sql = "INSERT INTO `pizzaorders`(`name`, `phone`, `sum`, `order`, `address`, `delivery`, `clientId`) VALUES ('$name', '$phone', '$price', '$fullorder', '$address', '1', '$clientId');";
+        $sql = "INSERT INTO `pizzaorders`(`name`, `phone`, `sum`, `order`, `address`, `delivery`, `clientId`, `date`) VALUES ('$name', '$phone', '$price', '$fullorder', '$address', '1', '$clientId', '$today');";
     }else{
-        $sql = "INSERT INTO `pizzaorders`(`name`, `phone`, `sum`, `order`, `address`, `delivery`) VALUES ('$name', '$phone', '$price', '$fullorder', '$address', '1');";
+        $sql = "INSERT INTO `pizzaorders`(`name`, `phone`, `sum`, `order`, `address`, `delivery`, `date`) VALUES ('$name', '$phone', '$price', '$fullorder', '$address', '1', '$today');";
     }
 
     $result = MakeOrder($sql);
@@ -105,12 +106,4 @@ if(isset($_POST['soDelivery'])){
     header('Location: thanks.php');
 }
 
-
-
-
-
-
-
-
-header('Location: paymentmenu.php');
 ?>

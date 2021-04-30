@@ -58,8 +58,8 @@
 				<input type="submit" name="checkOutSubmit" value="Find">
 			</h4>
 		</form>
-		<table class="table">
-			<thead>
+		<table class="table table-hover table-sm">
+			<thead class="thead-dark">
 				<tr>
 					<th scope="col">Id</th>
 					<th scope="col">Name</th>
@@ -68,6 +68,7 @@
 					<th scope="col">Order</th>
 					<th scope="col">Address</th>
 					<th scope="col">Cooked</th>
+					<th scope="col">Completed</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -82,6 +83,7 @@
 						echo "<td>". $_SESSION['CheckedOutItem']['order']. "</td>";
 						echo "<td>". $_SESSION['CheckedOutItem']['address']. "</td>";
 						echo "<td>". $_SESSION['CheckedOutItem']['cooked']. "</td>";
+						echo "<td>". $_SESSION['CheckedOutItem']['completed']. "</td>";
 
 						echo "</tr>";
 						unset( $_SESSION['CheckedOutItem'] );

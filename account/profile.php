@@ -53,12 +53,15 @@
 				<li class="nav-item">
 					<a class="nav-link" href="profile/adminpanel.php">Admin Panel</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="profile/myorders.php">My orders</a>
+				</li>
 			<?php
 				}
 				else{
 			?>
 				<li class="nav-item">
-					<a class="nav-link" href="profile/MyOrders.php">My orders</a>
+					<a class="nav-link" href="profile/myorders.php">My orders</a>
 				</li>
 			<?php
 				}

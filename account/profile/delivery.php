@@ -39,15 +39,32 @@
 			<li class="nav-item first">
 				<a class="nav-link" href="../profile.php">Profile</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="orders.php">Active Orders</a>
-			</li>
-			<li class="nav-item active">
-				<a class="nav-link" href="delivery.php">Active delivery</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="adminpanel.php">Admin Panel</a>
-			</li>
+			
+			<?php
+				if($_SESSION['user']['status'] != "Client"){
+			?>
+				<li class="nav-item">
+					<a class="nav-link" href="orders.php">Active Orders</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="delivery.php">Active delivery</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="adminpanel.php">Admin Panel</a>
+				</li>
+                <li class="nav-item">
+					<a class="nav-link" href="myorders.php">My orders</a>
+				</li>
+			<?php
+				}
+				else{
+			?>
+				<li class="nav-item">
+					<a class="nav-link" href="myorders.php">My orders</a>
+				</li>
+			<?php
+				}
+			?>
 
 			<li class="nav-item logOutButton">
 				<a href="../signout.php">
@@ -66,8 +83,8 @@
 	if($_SESSION['user']['status'] == "Deliveryman" or $_SESSION['user']['status'] == "Admin"){ ?>
 		<div class="main">
 			<div class="ordersTable">
-				<table class="table">
-					<thead>
+				<table class="table table-hover table-sm">
+					<thead class="thead-dark">
 						<tr>
 							<th scope="col">Id</th>
 							<th scope="col">Name</th>

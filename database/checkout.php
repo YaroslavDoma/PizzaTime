@@ -12,11 +12,9 @@ if(isset($_POST['checkOutSubmit'])){
     
     if (mysqli_num_rows($result) > 0) {
         $data = mysqli_fetch_assoc($result);
-        if($data['cooked'] == 1){
-            $cooked = "Yes";
-        }else{
-            $cooked = "No";
-        }
+
+        $status     = ($data['completed'] == 1) ? 'Yes' : 'No';
+        $cooked     = ($data['cooked'] == 1) 	? 'Yes' : 'No';
         
         $_SESSION['CheckedOutItem'] = [
             "id"        => $data['id'],
@@ -25,7 +23,8 @@ if(isset($_POST['checkOutSubmit'])){
             "sum"       => $data['sum'],
             "order"     => $data['order'],
             "address"   => $data['address'],
-            "cooked"    => $cooked
+            "cooked"    => $cooked,
+            "completed"  => $status
         ];
     }else{
         $_SESSION['messageError'] = "Error: Not found";
