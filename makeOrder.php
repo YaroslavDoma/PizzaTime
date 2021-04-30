@@ -9,7 +9,7 @@ if(isset($_POST['soYourself'])){
     $drinkCount 	= $_POST['drinkCount'];
     $name 			= $_POST['ordersName'];
     $phone 			= $_POST['phoneNumber'];
-    $today = date("d.m.y"); 
+    $today = date("Y-m-d");
     $fullorder = "";
     $price = 0;
 
@@ -58,7 +58,7 @@ if(isset($_POST['soDelivery'])){
     $name 			= $_POST['ordersname'];
     $phone 			= $_POST['phonenumber'];
     $address 		= $_POST['address'];
-    $today = date("m.d.y"); 
+    $today = date("Y-m-d");
     $fullorder = "";
     $price = 50;
 
@@ -67,7 +67,6 @@ if(isset($_POST['soDelivery'])){
         $_SESSION['messageError'] = "Not correct phone number.";
         header('Location: paymentmenu.php');
     }
-
     if(strlen($address) < 8){
         $_SESSION['messageError'] = "Address is short";
         header('Location: paymentmenu.php');
