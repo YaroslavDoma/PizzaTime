@@ -59,13 +59,20 @@ function FindDrink($name){
     }
 }
 
-
 function SqlCommand($sql){
     $link = connect();
     mysqli_query($link, $sql);
     mysqli_close($link);
 }
 
+
+function MakeOrder($sql){
+    $link = connect();
+    mysqli_query($link, $sql);
+    $id = mysqli_insert_id($link);
+    mysqli_close($link);
+    return $id;
+}
 
 
 function GetUncompletedOrders(){

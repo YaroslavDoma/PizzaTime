@@ -17,7 +17,12 @@
     if(mysqli_num_rows($result) > 0){
         $_SESSION['messageError'] = "Registration error: The email is already registered.";
         header('Location: login.php');
-    }else{
+    }
+    if($email == "" || $password == "" || $password2 == "" || $name == "" ){
+        $_SESSION['messageError'] = "Registration error: Fill up all input boxes.";
+        header('Location: login.php');
+    }
+    else{
         if($password === $password2){
 
             $password = md5($password);

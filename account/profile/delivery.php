@@ -72,6 +72,7 @@
 							<th scope="col">Id</th>
 							<th scope="col">Name</th>
 							<th scope="col">Address</th>
+							<th scope="col">Sum</th>
 							<th scope="col">Phone</th>
 							<th scope="col">Complete</th>
 						</tr>
@@ -85,6 +86,7 @@
 										echo "<th>". $item['id'] . "</th>";
 										echo "<td>". $item['name'] . "</td>";
 										echo "<td>". $item['address'] . "</td>";
+										echo "<td>". $item['sum'] . "</td>";
 										echo "<td>". $item['phone'] . "</td>";
 										?>
 										<td> 

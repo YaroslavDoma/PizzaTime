@@ -39,6 +39,9 @@
 			  <a class="nav-link" href="about.php">About</a>
 			</li>
 			<li class="nav-item">
+			  <a class="nav-link" href="checkOutOrder.php">Check order out</a>
+			</li>
+			<li class="nav-item">
 				<a href="account/login.php">
 					<button type="button" class="btn btn-light" >Log In</button>
 				</a>

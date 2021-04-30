@@ -72,6 +72,7 @@
 							<th scope="col">Id</th>
 							<th scope="col">Name</th>
 							<th scope="col">Order</th>
+							<th scope="col">Sum</th>
 							<th scope="col">Delivery</th>
 							<th scope="col">Complete</th>
 						</tr>
@@ -81,14 +82,15 @@
 							$data = GetUncompletedOrders();
 							if(count($data) != 0){
 								foreach($data as $item){
-									if($item['delivery'] == "1") $del = "Yes"; 
-									else  $del = "No"; 
+									if($item['delivery'] == "1") $delivery = "Yes"; 
+									else  $delivery = "No"; 
 									
 									echo "<tr>";
 										echo "<th>". $item['id'] . "</th>";
 										echo "<td>". $item['name'] . "</td>";
 										echo "<td>". $item['order'] . "</td>";
-										echo "<td>". $del . "</td>";
+										echo "<td>". $item['sum'] . "</td>";
+										echo "<td>". $delivery . "</td>";
 										?>
 										<td> 
 											<form method="POST" action="completeOrder.php">

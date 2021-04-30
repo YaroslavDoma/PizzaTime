@@ -1,9 +1,6 @@
 <?php
-	session_start();
+    session_start();
     require_once "database/functions.php";
-	if(!$_SESSION['LastOrder']){
-		header('Location: index.php');
-	}
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +19,7 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<nav class="navbar navbar-dark bg-dark">
 			<a class="navbar-brand" href="Index.php">
 			  <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -41,7 +38,7 @@
 			<li class="nav-item">
 			  <a class="nav-link" href="about.php">About</a>
 			</li>
-			<li class="nav-item">
+			<li class="nav-item active">
 			  <a class="nav-link" href="checkOutOrder.php">Check order out</a>
 			</li>
 			<li class="nav-item">
@@ -51,23 +48,58 @@
 			</li>
 		  </ul>
 		</div>
-		
-
 	</nav>
 
-	<div class="information">
-		<div class="card mb-3">
-			<img class="card-img-top" src="images/about.jpg" alt="Card image cap">
-			<div class="card-body">
-				<h2 class="card-title">Thank you!</h2>
-				<h4 class="card-text"> <img src="images/logo.png" style="height: 30px;"> Thanks for your order. Wait for your pizza </h4>
-				<h4 class="card-text">
-					<?php echo "Order id: " , $_SESSION['LastOrder'] ?>
-				</h4>
-			</div>
-		</div>
-	</div>
-	<?php unset($_SESSION['LastOrder']); ?>
+	<div class="CheckOut">
+		<form action="database/checkout.php" method="POST">
+			<h4>
+				Enter order id: 
+				<input type="text" placeholder="Order id" name="orderId">
+				<input type="submit" name="checkOutSubmit" value="Find">
+			</h4>
+		</form>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">Phone</th>
+					<th scope="col">Sum</th>
+					<th scope="col">Order</th>
+					<th scope="col">Address</th>
+					<th scope="col">Cooked</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+					if($_SESSION['CheckedOutItem']){
+						echo "<tr>";
+
+						echo "<th>". $_SESSION['CheckedOutItem']['id'] . "</th>";
+						echo "<td>". $_SESSION['CheckedOutItem']['name'] . "</td>";
+						echo "<td>". $_SESSION['CheckedOutItem']['phone'] . "</td>";
+						echo "<td>". $_SESSION['CheckedOutItem']['sum'] . "</td>";
+						echo "<td>". $_SESSION['CheckedOutItem']['order']. "</td>";
+						echo "<td>". $_SESSION['CheckedOutItem']['address']. "</td>";
+						echo "<td>". $_SESSION['CheckedOutItem']['cooked']. "</td>";
+
+						echo "</tr>";
+						unset( $_SESSION['CheckedOutItem'] );
+					}
+				?>
+			</tbody>
+		</table>
+		
+		<?php
+			if($_SESSION['messageError']){
+				echo '<div class="messageError">' . $_SESSION['messageError'] . '</div>';
+				unset($_SESSION['messageError']);
+			}
+		?> 
+    </div>
+
+
+
 
 </body>
 </html>

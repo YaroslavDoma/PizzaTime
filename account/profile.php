@@ -39,15 +39,30 @@
 			<li class="nav-item active first">
 				<a class="nav-link" href="profile.php">Profile</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="profile/orders.php">Active Orders</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="profile/delivery.php">Active delivery</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="profile/adminpanel.php">Admin Panel</a>
-			</li>
+
+
+			<?php
+				if($_SESSION['user']['status'] != "Client"){
+			?>
+				<li class="nav-item">
+					<a class="nav-link" href="profile/orders.php">Active Orders</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="profile/delivery.php">Active delivery</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="profile/adminpanel.php">Admin Panel</a>
+				</li>
+			<?php
+				}
+				else{
+			?>
+				<li class="nav-item">
+					<a class="nav-link" href="profile/MyOrders.php">My orders</a>
+				</li>
+			<?php
+				}
+			?>
 
 			<li class="nav-item logOutButton">
 				<a href="signout.php">

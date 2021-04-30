@@ -17,6 +17,25 @@ li{
     list-style: none;
 }
 
+.CheckOut{
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 40px black;
+}
+
+.messageError{
+    margin: auto;
+    margin-top: 20px;
+    width: 30%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgb(255, 0, 0);
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
 /* MOBILE  */
 @media screen and (max-width: 900px) {
     .navbar-brand{
@@ -28,5 +47,11 @@ li{
     }
     .navbar{
         width: 100%;
+    }
+
+    .messageError{
+        margin: auto;
+        margin-top: 40px;
+        width: 90%;
     }
 }

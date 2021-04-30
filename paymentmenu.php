@@ -35,7 +35,7 @@
 			<li class="nav-item">
 			  <a class="nav-link" href="Index.php">Home</a>
 			</li>
-			<li class="nav-item active">
+			<li class="nav-item">
 			  <a class="nav-link" href="about.php">About</a>
 			</li>
 			<li class="nav-item">
@@ -61,7 +61,7 @@
 			</thead>
 			<tbody>
 
-			<form method="POST" action="thanks.php">
+			<form method="POST" action="makeOrder.php">
 
 			<?php
 				if(isset($_POST['toPaymentMenu'])){
@@ -171,6 +171,15 @@
 				</div>
 			</div>
 		</div>
+
+		<?php
+			if($_SESSION['messageError']){
+				echo '<div class="messageError">' . $_SESSION['messageError'] . '</div>';
+				unset($_SESSION['messageError']);
+			}
+		?>
+
+
 	</div>
 
 	</form>
