@@ -18,6 +18,7 @@
         header('Location: orders.php');
     }
 
+    
     if(isset($_POST['Delivery'])){
         $id = $_POST['id'];
         $sql = "UPDATE `pizzaorders` SET `completed` = '1' WHERE `id` = '$id'";
@@ -26,6 +27,5 @@
         mysqli_close($link);
         header('Location: delivery.php');
     }
-    
-
 ?>
+

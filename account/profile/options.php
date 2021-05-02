@@ -20,28 +20,22 @@
 
     if(isset($_POST['EditPizza'])){
         $link = connect();
-
         $id = $_POST['id'];
         $Name = $_POST['Name'];
         $Ingredients = $_POST['Ingredients'];
         $Weight = $_POST['Weight'];
         $Price = $_POST['Price'];
 
-
         $sql = "UPDATE `pizza` SET `name` = '$Name', `ingredients` = '$Ingredients', `weight` = '$Weight', `price` = '$Price' WHERE `id` = '$id'";
-
         mysqli_query($link, $sql);
         mysqli_close($link);
         header('Location: adminpanel.php');
     }
-
     if(isset($_POST['EditDrinks'])){
         $link = connect();
-
         $id = $_POST['id'];
         $Name = $_POST['Name'];
         $Price = $_POST['Price'];
-
 
         $sql = "UPDATE `drinks` SET `name` = '$Name', `price` = '$Price' WHERE `id` = '$id'";
         echo $sql;
@@ -83,7 +77,8 @@
         $path = "images/pizza_cards/" . time() . $_FILES['ItemImage']['name'];
 
         if(move_uploaded_file($_FILES['ItemImage']['tmp_name'], "..\/..\/". $path)){
-            $sql = "INSERT INTO `pizza`(`name`, `ingredients`, `weight`, `price`, `image`) VALUES ('$name', '$ing', '$weight', '$price', '$path')";
+            $sql = "INSERT INTO `pizza`(`name`, `ingredients`, `weight`, `price`, `image`) 
+                VALUES ('$name', '$ing', '$weight', '$price', '$path')";
             mysqli_query($link, $sql);
             mysqli_close($link);
         }

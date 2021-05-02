@@ -25,9 +25,4 @@
         $_SESSION['messageError'] = "Log in error: Wrong password or email";
         header('Location: login.php');
     }
-
-
-    
-
-
 ?>

@@ -62,7 +62,6 @@
 			<tbody>
 
 			<form method="POST" action="makeOrder.php">
-
 			<?php
 				if(isset($_POST['toPaymentMenu'])){
 					$piz = $_POST['pizza'];
@@ -81,7 +80,9 @@
 									<th><img class="table-img" src="<?php echo $result['image']?>"></th>
 									<td><input class="tableInput" type="text" value="<?php echo $result['name']?>" readonly name="pizza[]"/></td>
 									<td><?php echo $result['price']?>&#8372;</td>
-									<td><input class="tableInput numberInput" type="number" min="1" max="5" value="1" name = "pizzaCount[]" onchange="PriceForPizza()" <?php echo "id='count-$count'" ?> /></td>
+									<td><input class="tableInput numberInput" type="number" min="1" max="5" value="1" name = "pizzaCount[]" 
+										onchange="PriceForPizza()" <?php echo "id='count-$count'" ?> />
+									</td>
 								</tr>
 
 							<?php
@@ -96,7 +97,9 @@
 										<th><img class="table-img" src="<?php echo $result['image']?>"></th>
 										<td><input class="tableInput" type="text" value="<?php echo $result['name']?>" readonly 	name="drink[]"/></td>
 										<td><?php echo $result['price']?>&#8372;</td>
-										<td><input class="tableInput numberInput" type="number" min="1" max="5" value="1" 	name = "drinkCount[]" onchange="PriceForPizza()" <?php echo "id='count-$count'" ?>/></td>
+										<td><input class="tableInput numberInput" type="number" min="1" max="5" value="1" 	name = "drinkCount[]" 
+											onchange="PriceForPizza()" <?php echo "id='count-$count'" ?>/>
+										</td>
 									</tr>
 
 								<?php
@@ -105,6 +108,7 @@
 					}
 				}
 			?>
+
 			</tbody>
 			</table>
 		</div>	

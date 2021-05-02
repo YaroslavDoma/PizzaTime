@@ -12,8 +12,6 @@ if(isset($_POST['soYourself'])){
     $today = date("Y-m-d");
     $fullorder = "";
     $price = 0;
-
-
     if(strlen($phone) < 8){
         $_SESSION['messageError'] = "Not correct phone number.";
     }else{
@@ -25,7 +23,6 @@ if(isset($_POST['soYourself'])){
             $price += (int)$result['price'] * (int)$pizzaCount[$i];
             $i++;
         }
-    
         if(count($drink) > 0){
             $i = 0;
             foreach($drink as $item){
@@ -36,14 +33,14 @@ if(isset($_POST['soYourself'])){
                 $i++;
             }
         }
-    
         if($_SESSION['user']){
             $clientId = $_SESSION['user']['id'];
-            $sql = "INSERT INTO `pizzaorders`(`name`, `phone`, `sum`, `order`, `clientId`, `date`) VALUES ('$name', '$phone', '$price', '$fullorder', '$clientId', '$today');";
+            $sql = "INSERT INTO `pizzaorders`(`name`, `phone`, `sum`, `order`, `clientId`, `date`) 
+                VALUES ('$name', '$phone', '$price', '$fullorder', '$clientId', '$today');";
         }else{
-            $sql = "INSERT INTO `pizzaorders`(`name`, `phone`, `sum`, `order`, `date`) VALUES ('$name', '$phone', '$price', '$fullorder', '$today');";
+            $sql = "INSERT INTO `pizzaorders`(`name`, `phone`, `sum`, `order`, `date`) 
+            VALUES ('$name', '$phone', '$price', '$fullorder', '$today');";
         }
-
         $result = MakeOrder($sql);
         $_SESSION['LastOrder'] = $result;
         header('Location: thanks.php');

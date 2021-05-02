@@ -145,7 +145,6 @@
 								echo "Sorry. Something get wrong";
 							}
 						?>
-
 						<?php foreach ($dataDrinks as $item): 
 								$count++;
 							?>
@@ -159,7 +158,9 @@
 											<h5 class="card-title">1 liter / <?php echo $item["price"]?>&#8372;</p>
 										</div>
 										<div class="order-button">
-											<input class="checkBox" type="checkbox" name="drinks[]" value="<?php echo $item['name']?>" <?php echo "id='check-$count'" ?> />
+											<input class="checkBox" type="checkbox" name="drinks[]" 
+												value="<?php echo $item['name']?>" <?php echo "id='check-$count'" ?> 
+											/>
 										</div>
 									</div>
 								</div>

@@ -33,9 +33,5 @@ if(isset($_POST['checkOutSubmit'])){
     mysqli_close($link);
     header('Location: ../checkOutOrder.php');
 }
-
-
-
-
-
 ?>
+

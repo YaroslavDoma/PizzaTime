@@ -10,6 +10,7 @@ function onDivClick(text){
 }
 
 
+
 function PriceForPizza(){
     let table = document.getElementById("table");
     let priceText = document.getElementById("PriceText");
